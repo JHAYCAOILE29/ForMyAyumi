@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>really really sure?</title>
+    <link rel="shortcut icon" href="./assets/favicon.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>really really sure?</h1>
+    <div class="gif">
+        <img src="./assets/gif5.gif" alt="vnc">
+    </div>
+    <div class="button-container">
+        <button type="button" class="yes-btn" id="yesBtn">Yes</button>
+        <a href="page4.html">
+            <button type="button" class="no-btn">No</button>
+        </a>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        
+        yesBtn.addEventListener('click', function() {
+            const maxX = window.innerWidth - this.offsetWidth;
+            const maxY = window.innerHeight - this.offsetHeight;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            this.style.position = 'fixed';
+            this.style.left = randomX + 'px';
+            this.style.top = randomY + 'px';
+            this.style.zIndex = '1000';
+        });
+    </script>
+</body>
+</html> 
