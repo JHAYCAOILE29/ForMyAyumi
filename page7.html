@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Special Letter</title>
     <link rel="shortcut icon" href="./assets/favicon.jpg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,11 +40,17 @@
         function openLetter() {
             document.getElementById('letterPopup').style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            // Prevent body scroll on mobile
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
         }
 
         function closeLetter() {
             document.getElementById('letterPopup').style.display = 'none';
             document.body.style.overflow = 'auto';
+            // Restore body scroll on mobile
+            document.body.style.position = '';
+            document.body.style.width = '';
         }
 
         // Close popup when clicking outside
@@ -52,6 +58,30 @@
             if (e.target === this) {
                 closeLetter();
             }
+        });
+
+        // Add touch event support for mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            const mailEnvelope = document.querySelector('.mail-envelope');
+            
+            // Add touch feedback
+            mailEnvelope.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.95)';
+            });
+            
+            mailEnvelope.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+            
+            // Prevent double-tap zoom on mobile
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function(event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
         });
     </script>
 </body>
