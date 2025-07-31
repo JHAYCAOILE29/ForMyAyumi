@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Letter</title>
+    <link rel="shortcut icon" href="./assets/favicon.jpg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>You have a special letter!</h1>
+    
+    <div class="mail-container">
+        <div class="mail-envelope" onclick="openLetter()">
+            <img src="./assets/MailBack.png" alt="Mail Back" class="mail-back">
+            <img src="./assets/letter.png" alt="Letter" class="letter">
+            <img src="./assets/MailFront.png" alt="Mail Front" class="mail-front">
+        </div>
+    </div>
+
+    <!-- Letter Popup -->
+    <div id="letterPopup" class="letter-popup">
+        <div class="letter-content">
+            <span class="close-btn" onclick="closeLetter()">&times;</span>
+            <h2>Dear Ayumi,</h2>
+            <p>I wanted to write you this special letter to tell you how much you mean to me. Every moment with you is like a beautiful dream come true.</p>
+            <p>Your smile brightens my day, your laugh fills my heart with joy, and your love makes me the happiest person in the world.</p>
+            <p>I promise to always be there for you, to love you unconditionally, and to make every day special for us.</p>
+            <p>Thank you for being you, for loving me, and for making my life complete.</p>
+            <p>I love you more than words can express.</p>
+            <p class="signature">With all my love,<br>Your Valentine ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        function openLetter() {
+            document.getElementById('letterPopup').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLetter() {
+            document.getElementById('letterPopup').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('letterPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLetter();
+            }
+        });
+    </script>
+</body>
+</html> 
